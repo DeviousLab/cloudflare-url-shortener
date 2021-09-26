@@ -23,7 +23,7 @@
 
             <div class="message" v-if="shortUrl">
                 <p>Your new shortened URL is:</p>
-                <h2>{{ shortUrl }}</h2>
+                <a v-bind:href="shortUrl">{{ shortUrl }}</a>
             </div>
 
             <div class="message error" v-if="error">
@@ -66,6 +66,7 @@
                     })
                     .then((data) => {
                         this.shortUrl = data.shortened;
+                        console.log(data);
                     })
                     .catch((error) => {
                         this.error = true;
