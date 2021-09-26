@@ -8,10 +8,26 @@ const nanoid = customAlphabet(
   6,
 );
 
+router.get('/:slug', async request => {
+  let link = await SHORTEN.get(request.params.slug);
+
+  if (link) {
+    return new Response(null, {
+      headers: { Location: link },
+      status: 301,
+    });
+  } else {
+    return new Response('Key not found', {
+      status: 404,
+    });
+  }
+});
+
 router.post('/links', async request => {
   let slug = nanoid();
   let requestBody = await request.json();
   if ('url' in requestBody) {
+    // Add slug to our KV store so it can be retrieved later:
     await SHORTEN.put(slug, requestBody.url, { expirationTtl: 86400 });
     let shortenedURL = `${new URL(request.url).origin}/${slug}`;
     let responseBody = {
