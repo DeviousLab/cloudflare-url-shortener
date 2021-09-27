@@ -1,15 +1,35 @@
-# 👷 `worker-template` Hello World
+# 👷 `cloudflare-worker` URL Shortener
 
-A template for kick starting a Cloudflare worker project.
+For the Cloudflare Developer
+Summer Challenge, I decided to take advantage of the [Cloudflare Worker](https://www.cloudflare.com/workers/) functionality along with the key value storage offered by [Workers KV](https://www.cloudflare.com/products/workers-kv/) to create a URL shortener. The application is then deployed using [Workers Sites](https://www.cloudflare.com/products/workers-sites).
 
-[`index.js`](https://github.com/cloudflare/worker-template/blob/master/index.js) is the content of the Workers script.
+The application is a simple HTTP API that allows you to input a URL and create a short URL that redirects to the original URL.
 
-#### Wrangler
+## Dependencies
 
-To generate using [wrangler](https://github.com/cloudflare/wrangler)
++ [@cloudflare/wrangler](https://www.npmjs.com/package/@cloudflare/wrangler)
++ [itty-router](https://github.com/kwhitley/itty-router)
++ [nanoid](https://github.com/ai/nanoid)
 
-```
-wrangler generate projectname https://github.com/cloudflare/worker-template
-```
+## Getting Started
 
-Further documentation for Wrangler can be found [here](https://developers.cloudflare.com/workers/tooling/wrangler).
+Deployed:
+[Live Preview](https://cloudlare-url-shortener.deviouslab.workers.dev/)
+
+Local:
+
+	git clone https://github.com/DeviousLab/cloudflare-url-shortener.git
+    cd cloudflare-url-shortener
+    npm install
+    wrangler dev
+
+
+    
+## Reference
+
++ [Cloudflare Developer
+Summer Challenge](https://challenge.developers.cloudflare.com/)
+
+## License
+
+[MIT](http://opensource.org/licenses/mit-license.php)
